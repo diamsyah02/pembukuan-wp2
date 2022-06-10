@@ -24,9 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // local
-// $config['base_url'] = 'http://localhost/pembukuan-wp2/';
+$config['base_url'] = 'http://localhost/pembukuan-wp2/';
 // dev
-$config['base_url'] = 'https://wp2.diamsyah.com';
+// $config['base_url'] = 'https://pembukuan.diamsyah.com';
 
 /*
 |--------------------------------------------------------------------------
