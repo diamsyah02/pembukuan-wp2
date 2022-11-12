@@ -17,7 +17,7 @@
           <div class="row">
             <div class="col-6">
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary" style="background-color: #0563bb;">Simpan</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #feb500;">Simpan</button>
               </div>
             </div>
             <div class="col-6">

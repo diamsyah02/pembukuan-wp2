@@ -8,7 +8,7 @@ class Auth extends CI_Controller {
     $this->load->model('M_Auth');
   }
 
-	public function login() {
+	public function index() {
 		$this->load->view('auth/login');
 	}
 
@@ -27,16 +27,18 @@ class Auth extends CI_Controller {
         $this->session->set_userdata($session);
         redirect();
       } else {
-        echo '<script>history.back(alert("Password yang anda masukkan salah!"))</script>';
+        $this->session->set_flashdata('msg_login', 'Password yang anda masukkan salah!');
+        redirect('auth');
       }
     } else {
-      echo '<script>history.back(alert("Username yang anda masukkan tidak terdaftar!"))</script>';
+      $this->session->set_flashdata('msg_login', 'Username yang anda masukkan tidak terdaftar!');
+      redirect('auth');
     }
   }
 
   public function logout() {
     session_start();
     session_destroy();
-    redirect('auth/login');
+    redirect('auth');
   }
 }

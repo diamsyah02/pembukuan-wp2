@@ -7,6 +7,10 @@
       <div class="row">
         <div class="col-md-4 col-12 border p-4">
           <div class="form-floating mb-3">
+            <select name="kategori" id="kategfloatingKategori" class="form-control"></select>
+            <label for="floatingKategori">Kategori</label>
+          </div>
+          <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingNamaProduk" name="name_product" placeholder="Nama Produk" autofocus required>
             <label for="floatingNamaProduk">Nama Produk</label>
           </div>
@@ -21,7 +25,7 @@
           <div class="row">
             <div class="col-6">
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary" style="background-color: #0563bb;">Perbaharui</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #feb500;">Perbaharui</button>
               </div>
             </div>
             <div class="col-6">
@@ -38,14 +42,21 @@
 </section>
 
 <script>
-  let id = '<?= $id;?>'
+  let id = '<?= $id; ?>'
   $(function() {
     getDetail()
   })
 
   async function getDetail() {
-    let res = await(await fetch(`${url}produk/getDetail/${id}/${Date.now()}`, setHeader())).json()
+    let res = await (await fetch(`${url}produk/getDetail/${id}/${Date.now()}`, setHeader())).json()
     let data = res.result
+    let kategori = res.kategori
+    let content_kategori = ``
+    kategori.map((val, i) => {
+      if(val.id == data.id_kategori) content_kategori += `<option value="${val.id}" selected>${val.nama_kategori}</option>`
+      else content_kategori += `<option value="${val.id}">${val.nama_kategori}</option>`
+    })
+    document.getElementById('kategfloatingKategoriri').innerHTML = content_kategori
     document.getElementById('floatingNamaProduk').value = data.name_product
     document.getElementById('floatingHargaBeli').value = data.price_buy
     document.getElementById('floatingHargaJual').value = data.price_sale

@@ -53,7 +53,7 @@
           <div class="row">
             <div class="col-6">
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary" style="background-color: #0563bb;">Perbaharui</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #feb500;">Perbaharui</button>
               </div>
             </div>
             <div class="col-6">

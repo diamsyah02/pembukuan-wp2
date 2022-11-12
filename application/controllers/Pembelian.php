@@ -74,6 +74,7 @@ class Pembelian extends CI_Controller {
       );
       $this->M_Produk->update($produk['id'], $data_product);
     }
+    $this->session->set_flashdata('msg_pemebelian', '<div class="alert alert-primary">Tambah data penjualan berhasil!</div>');
     redirect('pembelian');
   }
 
@@ -81,7 +82,6 @@ class Pembelian extends CI_Controller {
     $produk = $this->M_Produk->getDetail($this->input->post('produk'));
     $marketplace = ($this->input->post('marketplace') ==  0) ? '' : $this->M_Marketplace->getDetail($this->input->post('marketplace'));
     $detail = $this->M_Pembelian->getDetail($id);
-    // $total = (int)$produk['price'] * (int)$this->input->post('qty') + $this->input->post('biaya_lain');
     $data = array(
       'mst_produk_id'       => $this->input->post('produk'),
       'mst_marketplace_id'  => $this->input->post('marketplace'),
@@ -98,6 +98,7 @@ class Pembelian extends CI_Controller {
       );
       $this->M_Produk->update($produk['id'], $data_product);
     }
+    $this->session->set_flashdata('msg_pemebelian', '<div class="alert alert-primary">Edit data penjualan berhasil!</div>');
     redirect('pembelian');
   }
 

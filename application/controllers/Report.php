@@ -47,4 +47,10 @@ class Report extends CI_Controller {
     );
     echo json_encode($data);
   }
+
+  public function print_report($from, $to) {
+    $data['pembelian'] = $this->M_Pembelian->getDataByDate($from, $to);
+    $data['penjualan'] = $this->M_Penjualan->getDataByDate($from, $to);
+    $this->load->view('print_report', $data);
+  }
 }

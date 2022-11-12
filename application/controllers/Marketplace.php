@@ -52,6 +52,7 @@ class Marketplace extends CI_Controller {
       'percent_fee'      => $percent_fee
     );
     $this->M_Marketplace->save($data);
+    $this->session->set_flashdata('msg_marketplace', '<div class="alert alert-primary">Tambah data marketplace berhasil!</div>');
     redirect('marketplace');
   }
 
@@ -63,11 +64,13 @@ class Marketplace extends CI_Controller {
       'percent_fee'      => $percent_fee
     );
     $this->M_Marketplace->update($id, $data);
+    $this->session->set_flashdata('msg_marketplace', '<div class="alert alert-primary">Edit data marketplace berhasil!</div>');
     redirect('marketplace');
   }
 
   public function delete($id) {
     $this->M_Marketplace->delete($id);
+    $this->session->set_flashdata('msg_marketplace', '<div class="alert alert-primary">Hapus data marketplace berhasil!</div>');
     redirect('marketplace');
   }
 }

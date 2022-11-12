@@ -57,7 +57,6 @@ class Penjualan extends CI_Controller {
   public function save() {
     $produk = $this->M_Produk->getDetail($this->input->post('produk'));
     $marketplace = ($this->input->post('marketplace') ==  0) ? '' : $this->M_Marketplace->getDetail($this->input->post('marketplace'));
-    // $total = (int)$produk['price'] * (int)$this->input->post('qty');
     if($produk['stock'] > $this->input->post('qty')) {
       $data = array(
         'mst_produk_id'       => $this->input->post('produk'),
@@ -79,9 +78,11 @@ class Penjualan extends CI_Controller {
         );
         $this->M_Produk->update($produk['id'], $data_product);
       }
+      $this->session->set_flashdata('msg_penjualan', '<div class="alert alert-primary">Tambah data penjualan berhasil!</div>');
       redirect('Penjualan');
     } else {
-      echo '<script>history.back(alert("Stock tidak mencukupi ('.$produk['stock'].' item)!"))</script>';
+      $this->session->set_flashdata('msg_penjualan', '<div class="alert alert-danger">Stock tidak mencukupi ('.$produk['stock'].' item)!</div>');
+      redirect('penjualan');
     }
   }
 
@@ -89,9 +90,6 @@ class Penjualan extends CI_Controller {
     $produk = $this->M_Produk->getDetail($this->input->post('produk'));
     $marketplace = ($this->input->post('marketplace') ==  0) ? '' : $this->M_Marketplace->getDetail($this->input->post('marketplace'));
     $detail = $this->M_Penjualan->getDetail($id);
-    // $total = (int)$produk['price'] * (int)$this->input->post('qty');
-    // $totDiscount = $total * (int)$this->input->post('discount') / 100;
-    // $totFeeMarketplace = ($marketplace ==  '') ? 0 : $total * (int)$marketplace['percent_fee'] / 100;
     if($produk['stock'] > $this->input->post('qty')) {
       $data = array(
         'mst_produk_id'       => $this->input->post('produk'),
@@ -111,9 +109,11 @@ class Penjualan extends CI_Controller {
         );
         $this->M_Produk->update($produk['id'], $data_product);
       }
+      $this->session->set_flashdata('msg_penjualan', '<div class="alert alert-primary">Edit data penjualan berhasil!</div>');
       redirect('Penjualan');
     } else {
-      echo '<script>history.back(alert("Stock tidak mencukupi ('.$produk['stock'].' item)!"))</script>';
+      $this->session->set_flashdata('msg_penjualan', '<div class="alert alert-danger">Stock tidak mencukupi ('.$produk['stock'].' item)!</div>');
+      redirect('penjualan');
     }
   }
 

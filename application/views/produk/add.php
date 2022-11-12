@@ -7,6 +7,19 @@
       <div class="row">
         <div class="col-md-4 col-12 border p-4">
           <div class="form-floating mb-3">
+            <select name="kategori" id="kategfloatingKategori" class="form-control">
+              <option value="">--Choose--</option>
+              <?php
+                foreach($kategori as $val):
+              ?>
+              <option value="<?= $val['id'];?>"><?= $val['nama_kategori'];?></option>
+              <?php
+              endforeach;
+              ?>
+            </select>
+            <label for="floatingKategori">Kategori</label>
+          </div>
+          <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingNamaProduk" name="name_product" placeholder="Nama Produk" autofocus required>
             <label for="floatingNamaProduk">Nama Produk</label>
           </div>
@@ -21,7 +34,7 @@
           <div class="row">
             <div class="col-6">
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary" style="background-color: #0563bb;">Simpan</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #feb500;">Simpan</button>
               </div>
             </div>
             <div class="col-6">

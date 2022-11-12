@@ -25,7 +25,7 @@
   <link href="<?= base_url(); ?>assets/css/style.css" rel="stylesheet">
   <style>
     body {
-      background-color: #0563bb;
+      background-color: #feb500;
       margin: 0px;
       padding: 0px;
       overflow: hidden;
@@ -41,17 +41,22 @@
           <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4 col-12 border shadow p-4">
+              <?php
+                if($this->session->flashdata('msg_login') != NULL) {
+                  echo '<div class="alert alert-danger">'.$this->session->flashdata('msg_login').'</div>';
+                }
+              ?>
               <h3 class="mb-3">Form <strong>Login</strong></h3>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingUsername" name="username" placeholder="Username" value="admin" required>
+                <input type="text" class="form-control" id="floatingUsername" name="username" placeholder="Username" required>
                 <label for="floatingUsername">Username</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" value="admin123" required>
+                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
               </div>
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary" style="background-color: #0563bb;">Login</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #feb500;">Login</button>
               </div>
             </div>
             <div class="col-md-4"></div>
@@ -69,7 +74,13 @@
   <script src="<?= base_url(); ?>assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="<?= base_url(); ?>assets/js/jquery.js"></script>
   <script src="<?= base_url(); ?>assets/js/main.js"></script>
+  <script>
+    setTimeout(() => {
+      $('.alert-danger').fadeOut('slow')
+    }, 3000);
+  </script>
 </body>
 
 </html>

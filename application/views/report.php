@@ -1,7 +1,7 @@
 <section id="main-content" class="d-flex flex-column justify-content-center bg-white p-2 rounded" style="overflow: auto;">
   <div class="container" data-aos="fade-up">
     <div class="row d-flex align-items-center mb-2">
-      <div class="col-md-5 col-12">
+      <div class="col-md-4 col-12">
         <h2>
           <strong>Report Bulan <span id="setBulan">Januari</span></strong>
         </h2>
@@ -34,6 +34,9 @@
         </select>
       </div>
       <div class="col-md-2 col-12" id="profit"></div>
+      <div class="col-md-1 col-12">
+        <a href="#" id="btn-print" class="btn btn-primary" target="_blank">Print</a>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-3 col-12">
@@ -105,11 +108,10 @@
     let data = new FormData()
     data.append('dateFrom', `${from.getFullYear()}-${from.getMonth()+1}-${from.getDate()}`)
     data.append('dateTo', `${to.getFullYear()}-${to.getMonth()+1}-${to.getDate()}`)
-    // if(val === 'pembelian')
     getPembelian(data)
-    // else
     getPenjualan(data)
     getTotalReport(data)
+    $('#btn-print').attr('href', `${url}report/print_report/${from.getFullYear()}-${from.getMonth()+1}-${from.getDate()}/${to.getFullYear()}-${to.getMonth()+1}-${to.getDate()}`);
   }
 
   async function getPembelian(data) {
@@ -265,34 +267,6 @@
       $('#table-report-penjualan').show()
       $('#table-report-pembelian').hide()
     }
-  //   let d = new Date()
-  //   let from = new Date(d.getFullYear(), d.getMonth(), 1)
-  //   let to = new Date(d.getFullYear(), d.getMonth() + 1, 0)
-  //   let data = new FormData()
-  //   data.append('dateFrom', `${from.getFullYear()}-${from.getMonth()+1}-${from.getDate()}`)
-  //   data.append('dateTo', `${to.getFullYear()}-${to.getMonth()+1}-${to.getDate()}`)
-  //   if(val === 'pembelian')
-  //     getPembelian(data)
-  //   else
-  //     getPenjualan(data)
-  //   getTotalReport(data)
-  // }
-
-  // async function pickTahun(val) {
-  //   let val_bulan = document.getElementById('filterBulan').value
-  //   let bulan = val_bulan.split('-')
-  //   let type = document.getElementById('filterType').value
-  //   document.getElementById('setBulan').innerHTML = bulan[1]
-  //   let from = new Date(parseFloat(val), (parseFloat(bulan) == 1 ? 13 - 1 : parseFloat(bulan) - 1), 1)
-  //   let to = new Date(parseFloat(val), (parseFloat(bulan) == 1 ? 13 - 1 : parseFloat(bulan) - 1) + 1, 0)
-  //   let data = new FormData()
-  //   data.append('dateFrom', `${from.getFullYear()}-${from.getMonth()+1}-${from.getDate()}`)
-  //   data.append('dateTo', `${to.getFullYear()}-${to.getMonth()+1}-${to.getDate()}`)
-  //   if(type === 'pembelian')
-  //     getPembelian(data)
-  //   else
-  //     getPenjualan(data)
-  //   getTotalReport(data)
   }
 
   async function pickBulan(val) {
@@ -305,10 +279,9 @@
     let data = new FormData()
     data.append('dateFrom', `${from.getFullYear()}-${from.getMonth()+1}-${from.getDate()}`)
     data.append('dateTo', `${to.getFullYear()}-${to.getMonth()+1}-${to.getDate()}`)
-    // if(type === 'pembelian')
     getPembelian(data)
-    // else
     getPenjualan(data)
     getTotalReport(data)
+    $('#btn-print').attr('href', `${url}report/print_report/${from.getFullYear()}-${from.getMonth()+1}-${from.getDate()}/${to.getFullYear()}-${to.getMonth()+1}-${to.getDate()}`);
   }
 </script>
